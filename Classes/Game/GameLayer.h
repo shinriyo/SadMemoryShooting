@@ -13,11 +13,14 @@
 #include "GameConfig.h"
 #include "GameManager.h"
 #include "GameSprite.h"
-
+#include "FlipController.h"
+#include "Player.h"
 
 class GameLayer : public CCLayer
 {
 private:
+    FlipController * flip;
+  //  Player * player;
     
 //    GameSprite * _rockon;
 //    
@@ -112,9 +115,9 @@ public:
 //    
 //    /* cocos2dx Layer */
 //    //virtual bool init();
-        static GameLayer * create();
-        static CCScene * scene();
-        static CCScene * sceneWithGameStage(GameStage stage);
+//        static GameLayer * create();
+//        static CCScene * scene();
+//        static CCScene * sceneWithGameStage(GameStage stage);
 //    // CREATE_FUNC(GameLayer);
 //    
 //    
@@ -123,9 +126,9 @@ public:
 //    
     void update(float dt);
     
-    virtual void ccTouchesBegan(CCSet * pTouches, CCEvent * event);
-    virtual void ccTouchesMoved(CCSet * pTouches, CCEvent * event);
-    virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
+//    virtual void ccTouchesBegan(CCSet * pTouches, CCEvent * event);
+//    virtual void ccTouchesMoved(CCSet * pTouches, CCEvent * event);
+//    virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
 
 //    void startGame(CCObject * pSender);
 //    void stopGame(CCObject * pSender);

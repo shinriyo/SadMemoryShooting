@@ -13,27 +13,65 @@
 #include "GameManager.h"
 #include "GameLayer.h"
 
-class Player : public cocos2d::CCNode
+
+typedef enum
 {
-public:
-    
-    CC_SYNTHESIZE(float, _length, Length);
-    CC_SYNTHESIZE(CCPoint, _startPoint, StartPoint);
-    CC_SYNTHESIZE(CCPoint, _touchPoint, TouchPoint);
-    
-    Player();
-    static Player * create ();
-    void setBlinking (bool var);
-    
-    
+    kUP,
+    kRIGHTUP,
+    kRIGHT,
+    kRIGHTDOWN,
+    kDOWN,
+    kLEFTDOWN,
+    kLEFT,
+    kLEFTUP
+
+} MovingState;
+
+
+class Player : public GameSprite
+{
 private:
     
+    /* first setting */
+    GameManager * _manager;
+    CCSize  _winSize;
+
+    /* */
+    int _targetInterval;
     
-    inline bool pointEqualsZero(CCPoint point) {
-        return (point.x == 0 && point.y == 0);
-    };
+    void initPlayer(void);
+    
+
+public:
+    
+    CC_SYNTHESIZE(CCPoint, _vector, Vector);
+    CC_SYNTHESIZE(float, _length, Length);
+    CC_SYNTHESIZE(float, _speed, Speed);
+    CC_SYNTHESIZE(float, _radius, Radius);
+    CC_SYNTHESIZE(CCPoint, _startPoint, StartPoint);
+    CC_SYNTHESIZE(CCPoint, _touchPoint, TouchPoint);
+    CC_SYNTHESIZE(MovingState, type, Type);
+    
+    Player(void);
+    ~Player(void);
+    
+    GameSprite * _player;
+    
+    static Player * create ();
+    
+    virtual void update(float dt);
+    void reset(void);
+    bool select(bool flag);
+    
+    bool collidedWithSides(void);  
     
     
+    
+    void setBlinking (bool var);
+    
+    inline float Radius(void) {
+
+    }
 };
 
 

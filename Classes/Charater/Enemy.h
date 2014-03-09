@@ -14,10 +14,11 @@
 #include "GameManager.h"
 #include "GameSprite.h"
 
-class Enemy : public cocos2d::CCSprite
+class Enemy : public cocos2d::CCNode
 {
+    
     GameManager * _manager;
-    CCSize _winSize;
+    cocos2d::CCSize _winSize;
     
     int life;
     const char * getImageFileName(kEnemy type);
@@ -33,6 +34,7 @@ class Enemy : public cocos2d::CCSprite
     
     CCArray * _enemyObjects;
     
+    void createEnemies(kEnemy & enemy);
     void createEnemies(GameStage & stage, kEnemy & enemy, GameSprite * sprite);
     void createEnemies(GameStage & stage, std::vector<kEnemy> & enemy, GameSprite * sprite);
     void createEnemies(GameStage & stage, std::map<kEnemy, GameSprite> * info);

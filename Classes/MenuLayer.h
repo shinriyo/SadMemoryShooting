@@ -2,7 +2,7 @@
 //  MenuLayer.h
 //  SadMemoryonYourWhiteCampus
 //
-//  Created by KubokawaTakeshi on 2014/02/22.
+//  Created by KubokawaTakeshi on 2014/03/02.
 //
 //
 
@@ -10,65 +10,42 @@
 #define __SadMemoryonYourWhiteCampus__MenuLayer__
 
 #include <iostream>
-#include "GameConfig.h"
 #include "GameManager.h"
 
-class MenuLayer :
-public CCLayer,
-public CCBSelectorResolver,
-public CCBMemberVariableAssigner
+class MenuLayer : public cocos2d::CCLayer
 {
 public:
-    
-    virtual ~MenuLayer();
     MenuLayer();
+    ~MenuLayer();
     
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(MenuLayer, create);
+    virtual bool init();
+    static cocos2d::CCScene * scene();
+    CREATE_FUNC(MenuLayer);
     
-    void setAnimationManager(CCBAnimationManager *pAnimationManager);
+    virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     
-//    virtual void ccTouchesEnded(CCSet * touches, CCEvent * event);
-//    void update(float dt);
+    
+    virtual void update(float dt);
+    
     
 private:
     
-    /* Singleton */
-    GameManager * _manager;
-    
-    /* ScreenSize */
-    CCSize _winSize;
-    
-    CCBAnimationManager * mAnimationManager;
-    
     CCSpriteBatchNode * _gameBatchNode;
     
-    CCSprite * selectStage;
-    CCSprite * gameStory;
+    GameManager * _manager;
+    cocos2d::CCSize _winSize;
+    cocos2d::CCSprite * background;
     
-    /* Stage */
-    CCSprite * gameStageOne;
-    CCSprite * gameStageTwo;
-    CCSprite * gameStageThree;
-    void stagemenuLayer(CCObject * pSender, CCControlEvent pCCControlEvent);
-    CC_SYNTHESIZE(int, _gameStage, GameStage);
+    cocos2d::CCLabelBMFont * _titleDisplay;
+    cocos2d::CCMotionStreak * streak;
+    cocos2d::CCParticleSystemQuad * backParticle;
     
-    /* Score */
-    int bestScore;
-    CCString * score;
-    CCLabelBMFont * scoreLabel;
-    
-
-    
-    /* SpriteBuilder */
-    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(CCObject* pTarget, const char* pSelectorName);
-    virtual SEL_CCControlHandler onResolveCCBCCControlSelector(CCObject* pTarget, const char* pSelectorName);
-    virtual bool onAssignCCBMemberVariable(CCObject* pTarget, const char* pMemberVariableName, CCNode* pNode);
-    virtual bool onAssignCCBCustomProperty(CCObject* pTarget, const char* pMemberVariableName, CCBValue* pCCBValue);
-  
-    
-    void createMenuScreen();
-    
+   // void init(void);
+    void startGameAnimation(void);
+    void createMenuScreen(void);
+    void selectGameStage(void);
 };
-
 
 #endif /* defined(__SadMemoryonYourWhiteCampus__MenuLayer__) */

@@ -2,23 +2,38 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "GameSprite.h"
 
 class HelloWorld : public cocos2d::CCLayer
 {
     cocos2d::CCParticleSystemQuad * _backParticle;
     
+    GameSprite* pSprite;
+    
+    CCPoint touchStartPoint;
+    
+    CCLayer * baseLayer;
+    
+    CCSprite * background;
+    
+    CCCamera * pCamera;
+    
 public:
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();  
+    
+    HelloWorld();
+    ~HelloWorld();
 
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
+    virtual bool init();
     static cocos2d::CCScene* scene();
-    
-    // a selector callback
     void menuCloseCallback(CCObject* pSender);
-    
-    // implement the "static node()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    
+    virtual void ccTouchesBegan(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event);
+	virtual void ccTouchesMoved(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event);
+	virtual void ccTouchesEnded(cocos2d::CCSet* pTouches, cocos2d::CCEvent* event);
+	
+	void update (float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -12,28 +12,54 @@
 #include <iostream>
 #include "GameConfig.h"
 
-class GameSprite : public CCSprite {
+class GameSprite : public cocos2d::CCSprite {
     
-    CCSize _winSize;
+    cocos2d::CCSize _winSize;
     
 public:
     
-    CC_SYNTHESIZE(CCPoint, _nextPosition, NextPosition);
+    GameSprite (float radius);
+    GameSprite ();
+    
+    CC_SYNTHESIZE(bool, _active, Active);
+    CC_SYNTHESIZE(bool, _hit, Hit);
+    CC_SYNTHESIZE(int, _life, Life);
+    CC_SYNTHESIZE(float, _speed, Speed);
+    CC_SYNTHESIZE(float, _interval, Interval);
+    CC_SYNTHESIZE(float, _timer, Timer);
+    CC_SYNTHESIZE(float, _radius, Radius);
+    CC_SYNTHESIZE(float, _squaredRadius, SquaredRadius);
     CC_SYNTHESIZE(float, _width, Width);
     CC_SYNTHESIZE(float, _height, Height);
     CC_SYNTHESIZE(CCPoint, _vector, Vector);
+    CC_SYNTHESIZE(CCPoint, _nextPosition, NextPosition);
+    CC_SYNTHESIZE(CCTouch *, _touch, Touch);
     
-    GameSprite(void);
-    ~GameSprite(void);
+    static GameSprite * gameSpriteWithFileName(const char * pszFileName, float radius);
+    static GameSprite * gameSpriteWithFileName(const char * pszFileName);
     
-    static GameSprite * gameSpriteWithFile(const char * pszFileName);
+    
+    
+    
+    virtual void reset(void);
+    virtual void destroy(void);
+    virtual void update(float dt);
     
     inline virtual void place() {
-        this->setPosition(_nextPosition);
+     //   this->setPosition(_nextPosition);
+        this->setPositionX(_nextPosition.x);
+        this->setPositionY(_nextPosition.y);
+    }
+    
+    inline virtual void setPosition(const CCPoint& pos)
+    {
+        CCSprite::setPosition(pos);
+        if (!_nextPosition.equals(pos)) _nextPosition = pos;
     }
     
     inline virtual float radius() {
-        return _width * 0.5f;
+        // return _width * 0.5f;
+        return getTexture()->getContentSize().width * 0.5f;
     }
     
     inline void setSize() {

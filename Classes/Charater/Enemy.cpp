@@ -50,10 +50,7 @@ Enemy * Enemy::create(int tag, kEnemy type)
 
 bool Enemy::init(int tag, kEnemy type)
 {
-    if (!CCSprite::initWithFile(getImageFileName(type))) return false;
     
-    setTag(tag);
-    setType(type);
     
     return true;
 }
@@ -82,60 +79,7 @@ const char * Enemy::getImageFileName(kEnemy type)
 
 void Enemy::createEnemies(GameStage & stage, kEnemy & enemy, GameSprite * sprite)
 {
-    int i;
-    
-    /* Stage */
-    switch (stage)
-    {
-        // Stage 1 //
-        case kGameStage1:
-            _manager->setGameStage(kGameStage1);
-            
-            /* Enemy */
-            switch (enemy) {
-                case kEnemy01:
-                    _enemy1 = CCArray::createWithCapacity(30);
-                    _enemy1->retain();
-                    _enemy1Index = 0;
-                    for (i = 0; i < ENEMY1; i++) {
-                        sprite->gameSpriteWithFile(getImageFileName(kEnemy01));
-                        
-                    }
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-        // Stage 2 //
-        case kGameStage2:
-            _manager->setGameStage(kGameStage2);
-            
-            /* Enemy */
-            
-            
-            
-        case kGameStage3:
-            _manager->setGameStage(kGameStage3);
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-    
-    // stage1 enemy1
-    _enemy1 = CCArray::createWithCapacity(30);
-    _enemy1->retain();
-    _enemy1Index = 0;
-    for (i = 0; i < 30; i++)
-    {
-        sprite = GameSprite::gameSpriteWithFile("");
-        sprite->setTag(kEnemy01);
-        
-    }
+
 
     
 }
@@ -157,3 +101,5 @@ void Enemy::createEnemyActions()
     
     
 }
+
+

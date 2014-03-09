@@ -44,6 +44,68 @@ GameManager * GameManager::sharedGameManager()
     return _instance;
 }
 
+void GameManager::starGameCountdown()
+{
+//    /* first setting */
+//    _coundownLabel = CCLabelBMFont::create("3", "font.fnt", _winSize.width * 0.3);
+//    _coundownLabel->setAnchorPoint(ccp(0.5, 0.5));
+//    _coundownLabel->setPosition(ccp(_winSize.width * 0.5f, _winSize.height * 0.5));
+//    _coundownLabel->setScale(0);
+//
+//    // 3
+//    _coundownLabel->runAction(StartGameAnimation::num3Animation());
+//    gameLayer->addChild(_coundownLabel, 1);
+//    
+//    // 2
+//    _coundownLabel = CCLabelBMFont::create("2", "font.fnt", _winSize.width * 0.3);
+//    _coundownLabel->runAction(StartGameAnimation::num2Animation());
+//    gameLayer->addChild(_coundownLabel, 1);
+//    
+//    // 1
+//    _coundownLabel = CCLabelBMFont::create("1", "font.fnt", _winSize.width * 0.3);
+//    _coundownLabel->runAction(StartGameAnimation::num1Animation());
+//    gameLayer->addChild(_coundownLabel, 1);
+//    
+//    // GO
+//    CCSprite * start = CCSprite::create("go.png");
+//    start->cocos2d::CCNode::setPosition(start->getPosition());
+//    start->setScale(0);
+//    start->runAction(StartGameAnimation::num0Animation(this, callfunc_selector(GameManager::startGameAnimation)));
+//    gameLayer->addChild(start, 1);
+
+}
+
+void GameManager::commonGameScreen(CCLayer * layer)
+{
+    // Score
+    _scoreLabel = CCLabelBMFont::create("0", "font.fnt", _winSize.width * 0.3);
+    _scoreLabel->setAnchorPoint(ccp(1, 0.5));
+    _scoreLabel->setPosition(ccp(_winSize.width * 0.8f, _winSize.height * 0.94f));
+    layer->addChild(_scoreLabel);
+    
+    // Time
+    _timeLabel = CCLabelBMFont::create("120", "font.fnt", _winSize.width * 0.3);
+    _timeLabel->setPosition(ccp(_winSize.width * 0.9f, _winSize.height * 0.1));
+    layer->addChild(_timeLabel);
+    
+    // Energy
+    _enegyLabel = CCLabelBMFont::create("100%", "font.fnt", _winSize.width * 0.1f, kCCTextAlignmentRight);
+    _enegyLabel->setPosition(ccp(_winSize.width * 0.3f, _winSize.height * 0.94f));
+    layer->addChild(_enegyLabel);
+    
+    
+    // Game Over Message
+//    GameSprite * gameOverMessage = GameSprite::gameSpriteWithFileName("gameover.png");
+//    gameOverMessage->setPosition(ccp(_winSize.width / 2, _winSize.height / 2));
+//    gameOverMessage->setVisible(false);
+//    background->addChild(gameOverMessage);
+    
+    
+    
+}
+
+
+
 void GameManager::reset(void)
 {
     updateGameData();
@@ -61,13 +123,36 @@ void GameManager::update(float dt)
     _time -= _timeDecrement * dt;
     if (_timeDecrement) _time = 0;
     
-    
+
+}
+
+void GameManager::addScore(int reward)
+{
+    reward += reward;
 }
 
 void GameManager::updateGameData()
 {
     
     
+    
+    
+    
+}
+
+void GameManager::startGameAnimation()
+{
+    
+}
+
+void GameManager::stopGame()
+{
+    _running = false;
+    
+    // stop all actions currently running
+    int i;
+    int count;
+    CCSprite * sprite;
     
 }
 

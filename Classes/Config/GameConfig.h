@@ -29,7 +29,7 @@ using namespace CocosDenshion;
 #define BACKGROUND2     "stage_2.png"
 #define BACKGROUND3     "stage_3.png"
 // player //
-#define PLAYER          "player.png"
+#define PLAYER          "player_off.png"
 #define STAGE1_PLAYER   "rockon_1.png"
 #define STAGE2_PLAYER   "rockon_2.png"
 // Beam //
@@ -39,14 +39,17 @@ using namespace CocosDenshion;
 #define STAGE1_LIFE     "life_1.png"
 #define STAGE2_LIFE     "life_2.png"
 // Enemy //
-#define STAGE1_ENEMY1   "stage1_enemy_1.png"
-#define STAGE1_ENEMY2   "stage1_enemy_2.png"
-#define STAGE1_ENEMY3   "stage1_enemy_3.png"
+#define STAGE1_ENEMY1   "stage1enemy1.png"
+#define STAGE1_ENEMY2   "stage1enemy2.png"
+#define STAGE1_ENEMY3   "stage1enemy3.png"
 #define STAGE1_BOSS     "boss_1.png"
-#define STAGE2_ENEMY1   "stage2_enemy_1.png"
-#define STAGE2_ENEMY2   "stage2_enemy_2.png"
-#define STAGE2_ENEMY3   "stage3_enemy_3.png"
+#define STAGE2_ENEMY1   "stage2enemy1.png"
+#define STAGE2_ENEMY2   "stage2enemy2.png"
+#define STAGE2_ENEMY3   "stage2enemy3.png"
 #define STAGE2_BOSS     "boss_2.png"
+#define STAGE3_ENEMY1   "stage3enemy1.png"
+#define STAGE3_ENEMY2   "stage3enemy2.png"
+#define STAGE3_ENEMY3   "stage3enemy3.png"
 
 
 /* IMAGE */
@@ -109,7 +112,7 @@ typedef enum
     kGameStateOpening,
     kGameStatePlay,
     kGameStatePause,
-    kGameStateOver,
+    kGameStateGameOver,
     kGameStateMenu
     
 } GameState;
